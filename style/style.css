@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game__crosses-zeros {
+    border: solid 2px black;
+    max-width: 550px;
+    max-height: 550px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/img/background.jpg)
+}
+
+.container__crosses-zeros {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-size: 31px 31px;
+}
+
+.result-game__result {
+    color: #46cfe2;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 50px;
+}
+
+.crosses-zeros__general-playing-field {
+    width: 360px;
+    height: 360px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px 0;
+    outline: 3px solid #286b6d;
+    background-color: black;
+}
+
+.general-playing-field__field {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #286b6d;
+    cursor: pointer;
+}
+
+.button__new-game {
+    border: none;
+    color: #46cfe2;
+    background: #242424;
+    padding: 10px 16px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.win-class {
+    background: rgba(0, 225, 255, 0.5);
+}
+
+.zero-svg {
+    width: 100%;
+    height: 100%;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    filter: drop-shadow(0px 0px 6px #a0f6fd);
+    animation: draw 1s forwards;
+}
+
+.cross-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.first-cross {
+    stroke-dasharray: 125;
+    stroke-dashoffset: 125;
+    animation: draw 0.6s forwards;
+    filter: drop-shadow(0px 0px 6px #ffb3fd);
+}
+
+.second-cross {
+    stroke-dasharray: 125;
+    stroke-dashoffset: 125;
+    animation: draw 0.6s 0.6s forwards;
+    filter: drop-shadow(0px 0px 6px #ffb3fd);
+}
+
+@keyframes draw {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
