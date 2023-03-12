@@ -22,7 +22,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(/img/background.jpg)
+    background-image: url("/img/background.jpg")
 }
 
 .container__crosses-zeros {
@@ -32,6 +32,7 @@ html {
     align-items: center;
     flex-direction: column;
     background-size: 31px 31px;
+    
 }
 
 .result-game__result {
@@ -39,12 +40,13 @@ html {
     font-weight: bold;
     font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
-    height: 50px;
+    height: 40px;
 }
 
 .crosses-zeros__general-playing-field {
     width: 360px;
     height: 360px;
+    
     display: flex;
     flex-wrap: wrap;
     margin: 30px 0;
