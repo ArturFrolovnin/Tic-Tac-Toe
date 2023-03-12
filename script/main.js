@@ -1,8 +1,8 @@
 window.onload = function () {
 
     const generalPlayingField = document.getElementById('general-playing-field');
-    const resultGame = document.getElementById('result-game-crosses-zeros');
-    const buttonNewGame = document.getElementById('button-new-game-crosses-zeros');
+    const resultGame = document.getElementById('result-game-tic-tac-toe');
+    const buttonNewGame = document.getElementById('button-new-game-tic-tac-toe');
     const arrayFields = document.querySelectorAll('.general-playing-field__field');
     const zero = `<svg class="zero-svg">
 				    <circle r="45" cx="58" cy="58" stroke="#a0f6fd" stroke-width="10" fill="none" stroke-linecap="round" />
@@ -12,7 +12,15 @@ window.onload = function () {
 			    	<line class="second-cross" x1="100" y1="15" x2="15" y2="100" stroke="#ffb3fd" stroke-width="10" stroke-linecap="round" />
 		         </svg>`;
 
-    const winningCombination = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+    const winningCombination = [
+        [0, 1, 2], 
+        [3, 4, 5], 
+        [6, 7, 8], 
+        [0, 3, 6], 
+        [1, 4, 7], 
+        [2, 5, 8], 
+        [0, 4, 8], 
+        [2, 4, 6]];
     let numberMovesInGame = 0;
     let ifWinZero = false;
     let ifWinСross = false;
@@ -56,10 +64,12 @@ window.onload = function () {
             const containerCross = event.target;
             containerCross.innerHTML = zero;
             containerCross.classList.add(objectClasses.CLASS_ZERO);
+            console.log("hod-1")
             numberMovesInGame++
-            isStepCross();
             iSWinZero();
-            isDrawInGame()
+            isDrawInGame();
+            isStepCross();
+   
         }
 
     }
