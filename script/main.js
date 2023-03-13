@@ -44,7 +44,7 @@ window.onload = function () {
     }
 
     function isStepZero() {
-        if (event.target.className === objectClasses.FILED && ifWinZero == false && ifWinСross == false){
+        if (event.target.className === objectClasses.FILED && ifWinZero == false && ifWinСross == false) {
             const containerCross = event.target;
             containerCross.innerHTML = zero;
             containerCross.classList.add(objectClasses.CLASS_ZERO);

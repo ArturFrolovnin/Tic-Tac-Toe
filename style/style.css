@@ -1,5 +1,5 @@
-:root{
-    --game__tic-tac-toe:url("../img/background.jpg");
+:root {
+    --game__tic-tac-toe: url("../img/background.jpg");
     --result-game__result_color: #46cfe2;
     --tic-tac-toe__general-playing-field__background-color: black;
     --tic-tac-toe__general-playing-field__outline: 3px solid #286b6d;
@@ -10,7 +10,7 @@
     --zero-svg__stroke: #a0f6fd;
     --zero-svg__filter: drop-shadow(0px 0px 6px #a0f6fd);
     --first-cross__filter: drop-shadow(0px 0px 6px #ffb3fd);
-    --first-cross__stroke:#ffb3fd;
+    --first-cross__stroke: #ffb3fd;
 }
 
 * {
@@ -39,7 +39,7 @@ html {
     background-image: var(--game__tic-tac-toe);
 }
 
-.container__tic-tac-toe{
+.container__tic-tac-toe {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -62,7 +62,7 @@ html {
     display: flex;
     flex-wrap: wrap;
     margin: 30px 0;
-    outline: var( --tic-tac-toe__general-playing-field__outline);
+    outline: var(--tic-tac-toe__general-playing-field__outline);
     background-color: var(--tic-tac-toe__general-playing-field__background-color);
 }
 
@@ -108,7 +108,7 @@ html {
     stroke-dashoffset: 125;
     animation: draw 0.5s forwards;
     filter: var(--first-cross__filter);
-    stroke: var(--first-cross__stroke); 
+    stroke: var(--first-cross__stroke);
 }
 
 .second-cross {
