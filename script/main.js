@@ -5,22 +5,23 @@ window.onload = function () {
     const buttonNewGame = document.getElementById('button-new-game-tic-tac-toe');
     const arrayFields = document.querySelectorAll('.general-playing-field__field');
     const zero = `<svg class="zero-svg">
-				    <circle r="45" cx="58" cy="58" stroke="#a0f6fd" stroke-width="10" fill="none" stroke-linecap="round" />
+				    <circle r="45" cx="58" cy="58" stroke-width="10" fill="none" stroke-linecap="round" />
 			    </svg>`;
     const cross = `<svg class="cross-svg">
-				    <line class="first-cross" x1="15" y1="15" x2="100" y2="100" stroke="#ffb3fd" stroke-width="10" stroke-linecap="round" />
-			    	<line class="second-cross" x1="100" y1="15" x2="15" y2="100" stroke="#ffb3fd" stroke-width="10" stroke-linecap="round" />
+				    <line class="first-cross" x1="15" y1="15" x2="100" y2="100"  stroke-width="10" stroke-linecap="round" />
+			    	<line class="second-cross" x1="100" y1="15" x2="15" y2="100" stroke-width="10" stroke-linecap="round" />
 		         </svg>`;
 
     const winningCombination = [
-        [0, 1, 2], 
-        [3, 4, 5], 
-        [6, 7, 8], 
-        [0, 3, 6], 
-        [1, 4, 7], 
-        [2, 5, 8], 
-        [0, 4, 8], 
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
         [2, 4, 6]];
+
     let numberMovesInGame = 0;
     let ifWinZero = false;
     let ifWinСross = false;
@@ -42,13 +43,26 @@ window.onload = function () {
         return arrayFields[Math.floor(Math.random() * arrayFields.length)];
     }
 
-    function isStepCross() {
-        if (numberMovesInGame > 8) return;
-        const containerCross = selectRendomField();
-        if (containerCross.classList.contains(objectClasses.CLASS_CROSS) == true) {
+    function isStepZero() {
+        if (event.target.className === objectClasses.FILED && ifWinZero == false && ifWinСross == false){
+            const containerCross = event.target;
+            containerCross.innerHTML = zero;
+            containerCross.classList.add(objectClasses.CLASS_ZERO);
+            numberMovesInGame++
+            iSWinZero();
+            isDrawInGame();
             isStepCross();
         }
-        else if (containerCross.classList.contains(objectClasses.CLASS_ZERO) == true) {
+    }
+
+    function isStepCross() {
+        if (numberMovesInGame > 8) return;
+        if (ifWinZero == true) return;
+        const containerCross = selectRendomField();
+        if (containerCross.classList.contains(objectClasses.CLASS_CROSS)) {
+            isStepCross();
+        }
+        else if (containerCross.classList.contains(objectClasses.CLASS_ZERO)) {
             isStepCross();
         }
         else {
@@ -59,29 +73,14 @@ window.onload = function () {
         iSWinСross()
     }
 
-    function isStepZero() {
-        if (event.target.className === objectClasses.FILED && ifWinZero == false && ifWinСross == false) {
-            const containerCross = event.target;
-            containerCross.innerHTML = zero;
-            containerCross.classList.add(objectClasses.CLASS_ZERO);
-            console.log("hod-1")
-            numberMovesInGame++
-            iSWinZero();
-            isDrawInGame();
-            isStepCross();
-   
-        }
-
-    }
-
     function iSWinZero() {
-        for (let i = 0; i < winningCombination.length; i++) {
-            if (arrayFields[winningCombination[i][0]].classList.contains(objectClasses.CLASS_ZERO) &&
-                arrayFields[winningCombination[i][1]].classList.contains(objectClasses.CLASS_ZERO) &&
-                arrayFields[winningCombination[i][2]].classList.contains(objectClasses.CLASS_ZERO)) {
-                arrayFields[winningCombination[i][0]].classList.add(objectClasses.CLASS_WIN);
-                arrayFields[winningCombination[i][1]].classList.add(objectClasses.CLASS_WIN);
-                arrayFields[winningCombination[i][2]].classList.add(objectClasses.CLASS_WIN);
+        for (let index = 0; index < winningCombination.length; index++) {
+            if (arrayFields[winningCombination[index][0]].classList.contains(objectClasses.CLASS_ZERO) &&
+                arrayFields[winningCombination[index][1]].classList.contains(objectClasses.CLASS_ZERO) &&
+                arrayFields[winningCombination[index][2]].classList.contains(objectClasses.CLASS_ZERO)) {
+                arrayFields[winningCombination[index][0]].classList.add(objectClasses.CLASS_WIN);
+                arrayFields[winningCombination[index][1]].classList.add(objectClasses.CLASS_WIN);
+                arrayFields[winningCombination[index][2]].classList.add(objectClasses.CLASS_WIN);
                 resultGame.innerText = objectWorld.WIN_ZERO;
                 ifWinZero = true;
             }
@@ -89,16 +88,15 @@ window.onload = function () {
     }
 
     function iSWinСross() {
-        for (let i = 0; i < winningCombination.length; i++) {
-            if (arrayFields[winningCombination[i][0]].classList.contains(objectClasses.CLASS_CROSS) &&
-                arrayFields[winningCombination[i][1]].classList.contains(objectClasses.CLASS_CROSS) &&
-                arrayFields[winningCombination[i][2]].classList.contains(objectClasses.CLASS_CROSS)) {
-                arrayFields[winningCombination[i][0]].classList.add(objectClasses.CLASS_WIN);
-                arrayFields[winningCombination[i][1]].classList.add(objectClasses.CLASS_WIN);
-                arrayFields[winningCombination[i][2]].classList.add(objectClasses.CLASS_WIN);
+        for (let index = 0; index < winningCombination.length; index++) {
+            if (arrayFields[winningCombination[index][0]].classList.contains(objectClasses.CLASS_CROSS) &&
+                arrayFields[winningCombination[index][1]].classList.contains(objectClasses.CLASS_CROSS) &&
+                arrayFields[winningCombination[index][2]].classList.contains(objectClasses.CLASS_CROSS)) {
+                arrayFields[winningCombination[index][0]].classList.add(objectClasses.CLASS_WIN);
+                arrayFields[winningCombination[index][1]].classList.add(objectClasses.CLASS_WIN);
+                arrayFields[winningCombination[index][2]].classList.add(objectClasses.CLASS_WIN);
                 resultGame.innerText = objectWorld.WIN_CROSS;
                 ifWinСross = true;
-
             }
         }
     }
@@ -127,4 +125,5 @@ window.onload = function () {
     buttonNewGame.onclick = function () {
         newGame();
     }
+
 }
